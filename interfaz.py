@@ -76,6 +76,8 @@ def root():
         )
 
         label_duplicados.pack()
+
+        return dataframe
         
                                       
     boton_limpiar = tk.Button(
@@ -91,8 +93,33 @@ def root():
         )
 
 
+    def guardar_csv():
+
+        if dataframe is None:
+            print("No hay ningun dataset para guardar:")
+            return
+    
+        ruta = filedialog.asksaveasfile(
+            mode= "w",
+            defaultextension= ".csv",
+            filetypes=[("CSV files", "*.csv")]
+        )
+
+        if ruta:
+            dataframe.to_csv(ruta, index=False)
+            print("Archivo guardado")
+
+    boton_guardar = tk.Button(
+                root, 
+                text="Guardar",
+                command= guardar_csv
+            )
+    
+
+
     boton_limpiar.pack()
     boton_limpiar_duplicados.pack()
+    boton_guardar.pack()
         
 
 
