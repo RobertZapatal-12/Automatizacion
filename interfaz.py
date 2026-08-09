@@ -58,7 +58,9 @@ def root():
 
         label_nulos = tk.Label(root, text=(f"Cantidad de nulos restantes por filas: {dataframe.isna().sum()}")
         )
+        
         label_nulos.pack()
+        label_nulos.after(6000, label_nulos.destroy)
 
         return dataframe
 
@@ -76,6 +78,8 @@ def root():
         )
 
         label_duplicados.pack()
+
+        label_duplicados.after(6000, label_duplicados.destroy)
 
         return dataframe
         
@@ -110,18 +114,22 @@ def root():
             print("Archivo guardado")
 
     boton_guardar = tk.Button(
-                root, 
+                root,
                 text="Guardar",
                 command= guardar_csv
             )
+
+
+
     
-
-
     boton_limpiar.pack()
     boton_limpiar_duplicados.pack()
     boton_guardar.pack()
+
         
 
 
     root.mainloop()
 
+
+        
